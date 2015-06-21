@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Loboratorio - Estudo JSON">
+        <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+        <meta name="author" content="João Augusto de Moura">
+        <script type="text/javascript" src="../js/lista-alunos.js" defer></script>
+        <script type="text/javascript" src="../js/json.js" defer></script>
+        <title>Lista de Alunos JSON</title>
+    </head>
+    <body>
+        <div id="debug" hidden="hidden"></div>
+        <h1>Lista de alunos</h1>
+        <table>
+            <thead id="cabecalho"></thead>
+            <tbody id="tabela"></tbody>
+            <tfoot id="rodape"></tfoot>
+        </table>
+        <input type="button" onclick="loadJSON('../bin/alunos-from-json.php')" value="Atualizar Detalhes"/>
+    </body>
+</html>
