@@ -1,0 +1,8 @@
+**/__pycache__
+**/gmon.out
+**/.metadata
+**/.buildpath
+**/.project
+**/.settings
+java/**/bin
+**/.classpath
