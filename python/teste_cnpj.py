@@ -1,5 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-. ./f_formata_cnpj.bash
+import documentos.cnpj
+import sys
 
-f_formata_cnpj 12345678901234;
+__cnpj = sys.argv[1]
+
+if documentos.cnpj.valida(__cnpj):
+    print "É válido"
+    print documentos.cnpj.formata(__cnpj)
+else:
+    print "É inválido"
