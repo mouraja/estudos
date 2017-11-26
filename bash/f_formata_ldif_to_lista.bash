@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-[[ -z "${____UTILS____}" ]] && source ./utils.bash;
+[[ -z "${____UTILS____}" ]] && source ./utils/f_utils.bash;
 
 declare ____F_FORMATA_LDIF_TO_LISTA____="loaded";
 
@@ -79,7 +79,8 @@ EOF
         [[ $? -ne ${STATE_SUCCESS} ]] && exit ${STATE_FAIL};
 
         __delimiter="${__delimiter:-','}";
-        __campos=($( ${ECHO} "${__fields[@]}" | ${TR} "${__delimiter}" ' ' ));
+        __campos=(${__fields[@]//${__delimiter}/\ });
+        #__campos=($( ${ECHO} "${__fields[@]}" | ${TR} "${__delimiter}" ' ' ));
         __colunas=(${__campos[@]});
         __tem_linha=${OFF};
 

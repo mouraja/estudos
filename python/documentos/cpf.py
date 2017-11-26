@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 import re
-import utils
-import calculos
+import utils.utils
+import utils.calculos
 
 __cpf_size=11
 
@@ -22,39 +23,39 @@ def usage():
 
 def valida_caracteres(__cpf):
     __regex = re.compile('[^\d\-.]') 
-    return( __regex.match(__cpf) == utils.__nulo )
+    return( __regex.match(__cpf) == utils.utils.__nulo )
 
 def valida_tamanho(__cpf):
     return( len(__cpf) == __cpf_size )
 
 def checa_repeticao(__cpf):
     __regex = re.compile('[' + str(__cpf[0]) + ']{' + str(__cpf_size)  + '}')
-    return( __regex.match(__cpf) == utils.__nulo )
+    return( __regex.match(__cpf) == utils.utils.__nulo )
 
 def valida_digitos(__cpf):
     __digitos = [9,10]
     for __i in __digitos:
-        __digito = calculos.modulo11(__cpf[:__i],9,0)
+        __digito = utils.calculos.modulo11(__cpf[:__i],9,0)
         if (int(__cpf[__i]) != __digito):
-            return(utils.__falha)
-    return(utils.__sucesso)
+            return(utils.utils.__falha)
+    return(utils.utils.__sucesso)
 
 def valida(__cpf):
-    if utils.esta_vazio(__cpf):
-        return(utils.__falha)
+    if utils.utils.esta_vazio(__cpf):
+        return(utils.utils.__falha)
     if not valida_caracteres(__cpf):
-        return(utils.__falha)
-    __cpf = utils.pega_digitos(__cpf)
+        return(utils.utils.__falha)
+    __cpf = utils.utils.pega_digitos(__cpf)
     if not valida_tamanho(__cpf):
-        return(utils.__falha)
+        return(utils.utils.__falha)
     if not checa_repeticao(__cpf):
-        return(utils.__falha)
+        return(utils.utils.__falha)
     if not valida_digitos(__cpf):
-        return(utils.__falha)
-    return(utils.__sucesso)
+        return(utils.utils.__falha)
+    return(utils.utils.__sucesso)
 
 def formata(__cpf):
-    __cpf = utils.pega_digitos(__cpf)
+    __cpf = utils.utils.pega_digitos(__cpf)
     __regex = r"(\d{3})(\d{3})(\d{3})(\d{2})"
     __formato = r"\1.\2.\3-\4"
     return( re.compile(__regex).match(__cpf).expand(__formato) )

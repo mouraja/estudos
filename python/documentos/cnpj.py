@@ -1,13 +1,14 @@
+# -*- coding: utf-8 -*-
 import re
-import utils
-import calculos
+import utils.utils
+import utils.calculos
 
 __cnpj_size=14
 
 def usage():
     print('''
 
-    Sintaxe: cnpj.valida(<cnpj>)
+    Sintaxe: documentos.cnpj.valida(<cnpj>)
 
     Onde:
         cpf : Deve ser informado um valor no padrão CNPJ
@@ -15,21 +16,21 @@ def usage():
               sinais separadores comuns aos CNPJ's.
 
     Exemplos: 
-        cnpj.valida("12.758.232/0001-93")
-        cnpj.valida("12758232000193")
+        documentos.cnpj.valida("12.758.232/0001-93")
+        documentos.cnpj.valida("12758232000193")
 
 ''')
 
 def valida_caracteres(__cnpj):
     __regex=re.compile('[^\d\-/.]')
-    return(__regex.match(__cnpj) == utils.__nulo)
+    return(__regex.match(__cnpj) == utils.utils.__nulo)
 
 def valida_tamanho(__cnpj):
     return(len(__cnpj) == __cnpj_size)
 
 def checa_repeticao(__cnpj):
     __regex=re.compile('[' + str(__cnpj[0]) + ']{' + str(__cnpj_size)  + '}')
-    return(__regex.match(__cnpj) == utils.__nulo)
+    return(__regex.match(__cnpj) == utils.utils.__nulo)
 
 def valida_digito(__cnpj):
     __posicoes=[12,13]
@@ -45,33 +46,33 @@ def valida_digito(__cnpj):
         __resto = (__soma % 11)
         __digito = 0 if __resto < 2 else (11 - __resto)
         if (__digito != __verificador):
-            return(utils.__falha)
-    return(utils.__sucesso)
+            return(utils.utils.__falha)
+    return(utils.utils.__sucesso)
 
 def valida_digitos(__cnpj):
     __digitos=[12,13]
     for __i in __digitos:
-        __digito = calculos.modulo11(__cnpj[:__i],9,2)
+        __digito = utils.calculos.modulo11(__cnpj[:__i],9,2)
         if (__digito != int(__cnpj[__i])):
-            return(utils.__falha)
-    return(utils.__sucesso)
+            return(utils.utils.__falha)
+    return(utils.utils.__sucesso)
 
 def valida(__cnpj):
-    if utils.esta_vazio(__cnpj):
-        return(utils.__falha)
+    if utils.utils.esta_vazio(__cnpj):
+        return(utils.utils.__falha)
     if not valida_caracteres(__cnpj):
-        return(utils.__falha)
-    __cnpj = utils.pega_digitos(__cnpj)
+        return(utils.utils.__falha)
+    __cnpj = utils.utils.pega_digitos(__cnpj)
     if not valida_tamanho(__cnpj):
-        return(utils.__falha)
+        return(utils.utils.__falha)
     if not checa_repeticao(__cnpj):
-        return(utils.__falha)
+        return(utils.utils.__falha)
     if not valida_digitos(__cnpj):
-        return(utils.__falha)
-    return(utils.__sucesso)
+        return(utils.utils.__falha)
+    return(utils.utils.__sucesso)
 
 def formata(__cnpj):
-    __cnpj = utils.pega_digitos(__cnpj)
+    __cnpj = utils.utils.pega_digitos(__cnpj)
     __regex = r"(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})"
     __formato = r"\1.\2.\3/\4-\5"
     return( re.compile(__regex).match(__cnpj).expand(__formato) )

@@ -14,25 +14,17 @@ public class Teste {
 		Teste t = new Teste();
 
 		//261533-4
-		//t.modulo10("261533");
+		t.modulo10("261533");
 		
 		//261533-9
-		//t.modulo11("261533");
+		t.modulo11("261533");
 		
-		//086.057.098-39
-		t.cpf("08605709839");
-		
-        //t.modulo11("187812030001");
-        
-		//t.modulo11("016457380001");
+		//372.828908-12
+		t.cpf("372.828908-12");
 
-		//t.modulo11("0164573800017");
+		//01.647322/0001-23
+		t.cnpj("01.647322/0001-23");
 		
-		//01.645738/0001-79
-		t.cnpj("01645738000179");
-		
-		t.cnpj("187812030001-28");
-
 	}
 	
 	private void modulo10(String valor) {
@@ -51,7 +43,7 @@ public class Teste {
 			msg = "CPF %s é válido.\n";
 			System.out.printf(msg, Cpf.formata(valor));
 		} else {
-			System.err.printf("Cpf %s é inválido.\n", valor);
+			System.err.printf("CPF %s é inválido.\n", valor);
 		}
 	}
 	
