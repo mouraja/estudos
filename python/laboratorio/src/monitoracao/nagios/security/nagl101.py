@@ -1,0 +1,2 @@
+nagios = 'nagl101'
+api = 'dWBTTVJQsKX3nhF9tXdDhIIiEVcqc5VI2tBUIAKagYsWf8625CEFgDWTOoDZsvXN'

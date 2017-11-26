@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Execicio 5 - Atividade 11</title>
+    <meta charset="UTF-8" />
+    <script src="calculos/triangulo.js" charset="UTF-8" type="text/javascript"></script>
+    <script charset="UTF-8" type="text/javascript">
+		function main() {
+			var a,b,c;
+			a = parseInt(window.prompt("Digite o comprimento do lado 'a' esquerdo"));
+			b = parseInt(window.prompt("Digite o comprimento do lado 'b' direito"));
+			c = parseInt(window.prompt("Digite o comprimento da base 'c'"));
+			var t = new Triangulo(a,b,c);
+			if (t.isTriangulo()) {
+				printInfo(t);
+				t.plota(200, 200);
+			} else {
+				document.write("<p>Os lados informados não correspondem a um triangulo.</p>");
+			}
+		}
+		function printInfo(t) {
+			document.write("<p>Tipo: " + t.getDescricao() + "</p>");
+			document.write("<p>Segmento a: " + t.getLado('a') + "</p>");
+			document.write("<p>Segmento b: " + t.getLado('b') + "</p>");
+			document.write("<p>Segmento c: " + t.getLado('c') + "</p>");
+			document.write("<p>Área: " + t.getArea() + "</p>");
+			document.write("<p>Perimetro: " + t.getPerimetro() + "</p>");
+		}
+    </script>
+</head>
+<body onload="main();">
+</body>
+</html>

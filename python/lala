@@ -1,0 +1,8 @@
+dn;cn
+antes  ['dn', 'cn']
+depois  ['dn', 'cn']
+: ou=Special Users,dc=example,dc=com
+
+;: Wendy Lutz
+
+
